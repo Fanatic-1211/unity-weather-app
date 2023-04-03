@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
         rb.AddForce(Vector3.up * verticalSpeed * movementSpeed);
         rb.AddForce(Vector3.right * horizontalSpeed * movementSpeed);
 
-        // Setting the colour of the cube based on the direction it's moving.
+        // Setting the colour of the cube to a different colour for each direction it goes.
         if (horizontalSpeed < 0f)
         {
             GetComponent<Renderer>().material.color = leftColor;
