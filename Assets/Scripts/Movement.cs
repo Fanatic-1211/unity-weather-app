@@ -6,8 +6,13 @@ public class Movement : MonoBehaviour
 {
     public float movementSpeed = 20;
     public Rigidbody rb;
-    float moveHorizontal;
-    float moveVertical;
+    float horizontalSpeed;
+    float verticalSpeed;
+
+    public Color leftColor = Color.blue;
+    public Color rightColor = Color.red;
+    public Color upColor = Color.green;
+    public Color downColor = Color.yellow;
 
     private void Start()
     {
@@ -16,18 +21,34 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        //WASD input.
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
+        //WASD input
+        horizontalSpeed = Input.GetAxis("Horizontal");
+        verticalSpeed = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
     {
-        
-
         //movement vector to the Rigidbody component.
-        rb.AddForce(Vector3.up * moveVertical * movementSpeed);
-        rb.AddForce(Vector3.right * moveHorizontal * movementSpeed);
+        rb.AddForce(Vector3.up * verticalSpeed * movementSpeed);
+        rb.AddForce(Vector3.right * horizontalSpeed * movementSpeed);
+
+        // Setting the colour of the cube based on the direction it's moving.
+        if (horizontalSpeed < 0f)
+        {
+            GetComponent<Renderer>().material.color = leftColor;
+        }
+        else if (horizontalSpeed > 0f)
+        {
+            GetComponent<Renderer>().material.color = rightColor;
+        }
+        else if (verticalSpeed < 0f)
+        {
+            GetComponent<Renderer>().material.color = upColor;
+        }
+        else if (verticalSpeed > 0f)
+        {
+            GetComponent<Renderer>().material.color = downColor;
+        }
 
     }
 
