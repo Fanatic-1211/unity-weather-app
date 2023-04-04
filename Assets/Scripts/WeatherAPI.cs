@@ -53,8 +53,6 @@ public class WeatherAPI : MonoBehaviour
                 currentTempText.text = $"Temperature: {(weatherData.main.temp - 273.15f):F1} °C";
                 //Debug.Log("descriptionText is " + (descriptionWeatherText == null ? "null" : "not null"));
                 Debug.Log("weatherData is " + (weatherData == null ? "null" : "not null"));
-                //descriptionText.text = $"Description: {weatherData.weather[0].main}";
-
                 descriptionWeatherText.text = $"Description: {weatherData.weather[0].main}";
             }
         }
